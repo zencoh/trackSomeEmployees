@@ -1,0 +1,26 @@
+{
+  "name": "tracksomeemployees",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zencoh/trackSomeEmployees.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5"
+  },
+  "bugs": {
+    "url": "https://github.com/zencoh/trackSomeEmployees/issues"
+  },
+  "homepage": "https://github.com/zencoh/trackSomeEmployees#readme"
+}
