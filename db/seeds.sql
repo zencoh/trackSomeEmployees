@@ -1,2 +1,6 @@
 INSERT INTO department (name)
-VALUES (engineering)
+VALUES (Marketing),
+        (Sales),
+        (Finance),
+        (Human Resources),
+        (Operations);
