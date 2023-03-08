@@ -1,5 +1,5 @@
 const express = require('express');
-// Import and require mysql2
+const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const { printTable } = require('console-table-printer');
 
@@ -22,6 +22,68 @@ const db = mysql.createConnection(
   },
   console.log(`Connected to the company_db database.`)
 );
+
+promptUser();
+
+const promptUser = () => {
+  inquirer.prompt([
+      {
+        name: 'choices',
+        type: 'list',
+        message: 'Please select an option:',
+        choices: [
+          'View All Departments',
+          'View All Roles',
+          'View All Employees',
+          'Add Department',
+          'Add Role',
+          'Add Employee'
+          ]
+      }
+    ])
+    .then((answers) => {
+      const {choices} = answers;
+      if (choices === 'View All Departments') {
+        viewAllDepartments();
+      }
+      if (choices === 'View All Roles') {
+        viewAllRoles();
+      }
+      if (choices === 'View All Employees') {
+        viewAllEmployees();
+      }
+      if (choices === 'Add Department') {
+        addDepartment();
+      }
+      if (choices === 'Add Role') {
+        addRole();
+      }
+      if (choices === 'Add Employee') {
+        addEmployee();
+      }
+  });
+};
+
+const viewAllDepartments = () => {
+  db.query(`SELECT department.id AS id, department.name AS department FROM department`, function (err, results) {
+    printTable(results);
+  });
+  promptUser();
+};
+
+const viewAllRoles = () => {
+  db.query(`SELECT role.id, role.title, role.salary, department_id FROM role JOIN department ON role.department_id = department.id`, function (err, results) {
+    printTable(results);
+  });
+  promptUser();
+};
+
+const viewAllEmployees = () => {
+  db.query(`SELECT employee.id, employee.first_name, employee.last_name, role_id FROM employee JOIN role ON employee.role_id = role.id, manager_id FROM employee ON employee.manager_id = employee.id`, function (err, results) {
+    printTable(results);
+  });
+  promptUser();;
+};
 
 // Query database
 db.query('SELECT * FROM department', function (err, results) {
