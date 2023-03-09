@@ -9,7 +9,7 @@ VALUES ('Marketing'),
 
 SELECT * FROM role JOIN department ON role.department = department.id;
 
-INSERT INTO role (title, salary, department_id)
+INSERT INTO role (title, salary, department)
 VALUES ('Marketing Lead', 80000, 1),
         ('Salesperson', 90000, 2),
         ('Accountant', 90000, 3),
@@ -18,8 +18,8 @@ VALUES ('Marketing Lead', 80000, 1),
 
 SELECT * FROM employee JOIN role ON employee.role_id = role.id;
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('John', 'Wick', 1, 1),
+INSERT INTO employee (first_name, last_name, role_id, manager)
+VALUES ('John', 'Wick', 1, NULL),
         ('Morty', 'Sanchez', 2, 3),
         ('Mark', 'Smith', 2, NULL),
         ('Chris', 'Munoz', 3, 5),

@@ -167,7 +167,7 @@ const updateRole = () => {
   })
 }
 
-// promptUser();
+promptUser();
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
