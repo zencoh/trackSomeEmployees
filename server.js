@@ -85,6 +85,45 @@ const viewAllEmployees = () => {
   promptUser();;
 };
 
+const addDepartment = () => {
+  inquirer.prompt([
+      {
+        name: 'newDepartment',
+        type: 'input',
+        message: 'What is the name of Department?',
+      }
+    ])
+    .then((answer) => {
+      db.query(`INSERT INTO department (department_name) VALUES (?)`, function (err, results) {
+        printTable(results);
+      });
+      console.log(answer.newDepartment + ` Department successfully created!`);
+      viewAllDepartments();
+    });
+};
+
+const addRole = () => {
+  db.query('SELECT * FROM department', function (err, results) {
+    if (err) throw err;
+    let deptNamesArr = [];
+    results.forEach((department) => {deptNamesArray.push(department.department_name)});
+  });
+  deptNamesArray.push('Create Department');
+    inquirer.prompt([
+      {
+        name: 'departmentName',
+        type: 'list',
+        message: 'Which department is this new role in?',
+        choices: deptNamesArray
+      }
+    ]).then((answer) => {
+      if (answer.departmentName === 'Create Department') {
+        this.addDepartment();
+        } else {
+          addRoleResume(answer);
+        }
+    });
+}
 // Query database
 db.query('SELECT * FROM department', function (err, results) {
   printTable(results);
