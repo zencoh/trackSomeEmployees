@@ -1,11 +1,13 @@
-USE company_db;
+-- USE company_db;
 
 INSERT INTO department (name)
-VALUES (Marketing),
-        (Sales),
-        (Finance),
-        (Human Resources),
-        (Operations);
+VALUES ('Marketing'),
+        ('Sales'),
+        ('Finance'),
+        ('Human Resources'),
+        ('Operations');
+
+SELECT * FROM role JOIN department ON role.department = department.id;
 
 INSERT INTO role (title, salary, department_id)
 VALUES ('Marketing Lead', 80000, 1),
@@ -13,6 +15,8 @@ VALUES ('Marketing Lead', 80000, 1),
         ('Accountant', 90000, 3),
         ('Human Resource Manager', 100000, 4),
         ('Developer', 120000, 5);
+
+SELECT * FROM employee JOIN role ON employee.role_id = role.id;
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ('John', 'Wick', 1, 1),
