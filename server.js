@@ -1,13 +1,6 @@
-// const express = require('express');
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const { printTable } = require('console-table-printer');
-
-// const PORT = process.env.PORT || 3001;
-// const app = express();
-
-// app.use(express.urlencoded({ extended: false }));
-// app.use(express.json());
 
 // Connect to database
 const db = mysql.createConnection(
@@ -19,7 +12,7 @@ const db = mysql.createConnection(
   console.log(`Connected to the company_db database.`)
 );
 
-// promptUser();
+
 
 const promptUser = () => {
   inquirer.prompt([
@@ -163,9 +156,7 @@ const updateRole = () => {
   const employeeSql = `SELECT * FROM employee`;
   db.query(employeeSql, (err, result) => {
     if (err) throw err;
-
     const employees = result.map(({ id, first_name, last_name }) => ({ name: first_name + " " + last_name, value: id }));
-
     inquirer.prompt([
       {
         type: 'list',
@@ -179,13 +170,10 @@ const updateRole = () => {
         const params = [];
         // params = [name]
         params.push(employee);
-
         const roleSql = `SELECT * FROM role`;
-
         db.query(roleSql, (err, result) => {
           if (err) throw err;
           const roles = result.map(({ id, title }) => ({ name: title, value: id }));
-
           inquirer.prompt([
             {
               type: 'list',
@@ -203,13 +191,10 @@ const updateRole = () => {
               // params = [role, e = name,]
               params[0] = role
               params[1] = employee
-
               const sql = `UPDATE employee SET role_id = ? WHERE id = ?`;
-
               db.query(sql, params, (err, result) => {
                 if (err) throw err;
                 console.log("Employee has been updated!");
-
                 promptUser();
               });
             });
@@ -219,12 +204,3 @@ const updateRole = () => {
 }
 
 promptUser();
-
-// Default response for any other request (Not Found)
-// app.use((req, res) => {
-//   res.status(404).end();
-// });
-
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
