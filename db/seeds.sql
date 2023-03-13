@@ -7,7 +7,8 @@ VALUES ('Marketing'),
         ('Human Resources'),
         ('Operations');
 
-SELECT * FROM role JOIN department ON role.department = department.id;
+-- SELECT * FROM role JOIN department ON role.department = department.id;
+SELECT * FROM department;
 
 INSERT INTO role (title, salary, department)
 VALUES ('Marketing Lead', 80000, 1),
@@ -16,16 +17,19 @@ VALUES ('Marketing Lead', 80000, 1),
         ('Human Resource Manager', 100000, 4),
         ('Developer', 120000, 5);
 
-SELECT * FROM employee JOIN role ON employee.role_id = role.id;
+-- SELECT * FROM employee JOIN role ON employee.role_id = role.id;
+SELECT * FROM role;
 
 INSERT INTO employee (first_name, last_name, role_id, manager)
 VALUES ('John', 'Wick', 1, NULL),
-        ('Morty', 'Sanchez', 2, 3),
+        ('Morty', 'Sanchez', 2, 1),
         ('Mark', 'Smith', 2, NULL),
-        ('Chris', 'Munoz', 3, 5),
+        ('Chris', 'Munoz', 3, 2),
         ('Grant', 'Beach', 3, NULL),
-        ('Timothy', 'Kershaw', 4, 6),
+        ('Timothy', 'Kershaw', 4, 3),
         ('Rick', 'Sanchez', 5, NULL),
-        ('Heather', 'Bower', 5, 7),
-        ('Morgan', 'Carter', 5, 7),
-        ('Mateo', 'Wolfgang', 5, 7);
+        ('Heather', 'Bower', 5, 4),
+        ('Morgan', 'Carter', 5, 5),
+        ('Mateo', 'Wolfgang', 5, 6);
+
+        SELECT * FROM employee;
