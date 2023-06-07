@@ -21,4 +21,4 @@ Thank you for investing your time in reading through my code and README. Since I
 By creating the database and seeding it in a mysql shell and initiating the server anyone can test my project for themselves.
 
 ## Questions
-For any questions, please feel free to reach out to me on GitHub at [zencoh](https://github.com/zencoh). You can also reach me at chsoccer4@outlook.com.
+For any questions, please feel free to reach out to me on GitHub at [zencoh](https://github.com/zencoh). You can also reach me at chartkopp@outlook.com.
